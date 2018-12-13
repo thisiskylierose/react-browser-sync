@@ -1,35 +1,36 @@
-var path = require('path')
-var express = require('express')
-var http = require('http')
-var ejs = require('ejs')
-var app = express()
-var port = 3000
+const path = require('path');
+const express = require('express');
+const http = require('http');
+const ejs = require('ejs');
 
-app.engine('html', ejs.renderFile)
+const app = express();
+const port = 3000;
 
-app.set('view engine', 'html')
-app.set('views', path.join(__dirname, 'www/views'))
+app.engine('html', ejs.renderFile);
 
-app.use('/', express.static(path.join(__dirname, 'www')))
-app.use('/data', express.static(path.join(__dirname, 'data')))
+app.set('view engine', 'html');
+app.set('views', path.join(__dirname, 'www/views'));
+
+app.use('/', express.static(path.join(__dirname, 'www')));
+app.use('/data', express.static(path.join(__dirname, 'data')));
 
 if (app.get('env') == 'development') {
-  var browserSync = require('browser-sync')
-  var config = {
+  const browserSync = require('browser-sync');
+  const config = {
     files: ['www/**/*.{js,css,html}'],
     logLevel: 'debug',
     logSnippet: false,
     reloadDelay: 300,
-    reloadOnRestart: true,
-  }
+    reloadOnRestart: true
+  };
 
-  app.use(require('connect-browser-sync')(browserSync(config)))
+  app.use(require('connect-browser-sync')(browserSync(config)));
 }
 
 app.get('*', (req, res) => {
-  res.render('index')
-})
+  res.render('index');
+});
 
-http.createServer(app).listen(port, function() {
-  console.log('Listening on port ' + port + '...')
-})
+http.createServer(app).listen(port, () => {
+  console.log(`Listening on port ${port}...`);
+});
