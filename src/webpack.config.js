@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -12,14 +13,11 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.json']
   },
-  plugins: [new ExtractTextPlugin('bundle.css')],
+  plugins: [new ExtractTextPlugin('bundle.css', { allChunks: true })],
   module: {
     rules: [
       {
-        // this is so that we can compile any React,
-        // ES6 and above into normal ES5 syntax
         test: /\.(js|jsx)$/,
-        // we do not want anything from node_modules to be compiled
         exclude: /node_modules/,
         use: ['babel-loader']
       },
@@ -28,8 +26,23 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader', // translates CSS into CommonJS
-            'sass-loader' // compiles Sass to CSS, using Node Sass by default
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                modules: true,
+                localIdentName: '[local]___[hash:base64:5]'
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                path: 'src/postcss.config.js'
+              }
+            },
+            {
+              loader: 'sass-loader'
+            }
           ]
         })
       },

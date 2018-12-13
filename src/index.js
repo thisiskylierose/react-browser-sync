@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 
 import styles from './index.css';
 
-const App = () => <p>This works!</p>;
+const App = () => <div className={styles.wrapper}>This works!</div>;
 
 ReactDOM.render(<App />, document.getElementById('root'));
