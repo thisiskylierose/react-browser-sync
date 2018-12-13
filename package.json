@@ -15,7 +15,7 @@
     "clean": "rm -rf www/assets && rm -rf www/data",
     "slate": "rm -rf node_modules && npm install",
     "start": "node server.js",
-    "webpack": "babel-node ./node_modules/webpack/bin/webpack --config src/webpack.config.js",
+    "build": "webpack --config src/webpack.config.js",
     "test": "test"
   },
   "author": "Kylie Rose",
@@ -38,6 +38,7 @@
     "eslint-plugin-prettier": "3.0.0",
     "eslint-plugin-react": "7.11.1",
     "express": "4.16.4",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
     "file-loader": "2.0.0",
     "node-sass": "4.11.0",
     "prettier": "1.15.3",

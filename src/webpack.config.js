@@ -1,4 +1,5 @@
-import path from 'path';
+var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: path.join(process.cwd(), 'src/index.js'),
@@ -9,7 +10,9 @@ module.exports = {
   mode: process.env.NODE_ENV || 'development',
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    extensions: ['.js', '.json'],
   },
+  plugins: [new ExtractTextPlugin('bundle.css')],
   module: {
     rules: [
       {
@@ -22,11 +25,13 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        use: [
-          'style-loader', // creates style nodes from JS strings
-          'css-loader', // translates CSS into CommonJS
-          'sass-loader', // compiles Sass to CSS, using Node Sass by default
-        ],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader', // translates CSS into CommonJS
+            'sass-loader', // compiles Sass to CSS, using Node Sass by default
+          ],
+        }),
       },
       {
         test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
