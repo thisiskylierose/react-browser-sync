@@ -1,0 +1,35 @@
+{
+  "name": "react-client-sample",
+  "version": "1.0.0",
+  "description": "React Client Sample",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thisiskylierose/react-browser-sync"
+  },
+  "bugs": {
+    "url": "https://github.com/thisiskylierose/react-browser-sync/issues"
+  },
+  "homepage": "https://github.com/thisiskylierose/react-browser-sync#readme",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf www/assets && rm -rf www/data",
+    "slate": "rm -rf node_modules && npm install",
+    "test": "test"
+  },
+  "author": "Kylie Rose",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "2.26.3",
+    "connect-browser-sync": "2.1.0",
+    "ejs": "2.6.1",
+    "eslint": "5.10.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-react": "7.11.1",
+    "express": "4.16.4",
+    "prettier": "1.15.3"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,15 @@
+# Logs
+*.log
+
+# Build directories
+dist/*
+!dist/.gitkeep
+www/*
+!www/.gitkeep
+!/www/views
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Dependency directories
+node_modules/
