@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -6,14 +5,14 @@ module.exports = {
   entry: path.join(process.cwd(), 'src/index.js'),
   output: {
     path: path.join(process.cwd(), 'www/assets'),
-    filename: 'index.bundle.js'
+    filename: 'scripts/bundle.js'
   },
   mode: process.env.NODE_ENV || 'development',
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.json']
   },
-  plugins: [new ExtractTextPlugin('bundle.css', { allChunks: true })],
+  plugins: [new ExtractTextPlugin('styles/bundle.css', { allChunks: true })],
   module: {
     rules: [
       {
@@ -22,7 +21,7 @@ module.exports = {
         use: ['babel-loader']
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.(css)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -37,11 +36,10 @@ module.exports = {
             {
               loader: 'postcss-loader',
               options: {
-                path: 'src/postcss.config.js'
+                config: {
+                  path: path.join(process.cwd(), 'src/postcss.config.js')
+                }
               }
-            },
-            {
-              loader: 'sass-loader'
             }
           ]
         })
