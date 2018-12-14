@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -7,14 +6,14 @@ module.exports = {
   entry: path.join(process.cwd(), 'src/index.js'),
   output: {
     path: path.join(process.cwd(), 'www/assets'),
-    filename: 'bundle.js'
+    filename: 'scripts/bundle.js'
   },
   mode: process.env.NODE_ENV || 'development',
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.json']
   },
-  plugins: [new ExtractTextPlugin('bundle.css', { allChunks: true })],
+  plugins: [new ExtractTextPlugin('styles/bundle.css', { allChunks: true })],
   optimization: {
     minimizer: [new UglifyJsPlugin({ extractComments: true })]
   },
