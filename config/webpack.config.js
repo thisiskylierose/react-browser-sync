@@ -37,7 +37,7 @@ module.exports = {
               loader: 'postcss-loader',
               options: {
                 config: {
-                  path: path.join(process.cwd(), 'src/postcss.config.js')
+                  path: path.join(process.cwd(), 'config/postcss.config.js')
                 }
               }
             }

@@ -1,7 +1,7 @@
 {
   "name": "react-browser-sync",
   "version": "1.0.0",
-  "description": "React Browser Sync",
+  "description": "React BrowserSync",
   "repository": {
     "type": "git",
     "url": "https://github.com/thisiskylierose/react-browser-sync"
@@ -18,8 +18,8 @@
     "slate:win": "rmdir /s /q node_modules && npm install",
     "start": "npm-run-all build -p watch:build start:server",
     "start:server": "node server.js",
-    "watch:build": "webpack --watch --config src/webpack.config.js",
-    "build": "webpack --config src/webpack.config.js",
+    "watch:build": "webpack --watch --config config/webpack.config.js",
+    "build": "webpack --config config/webpack.config.js",
     "lint": "eslint --ext .js src/",
     "test": "test"
   },
