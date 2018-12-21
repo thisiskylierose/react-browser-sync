@@ -1,5 +1,45 @@
-.wrapper {
-  background: #222;
-  color: #8ee4af;
+*, *:before, *:after {
   box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #282424;
+}
+
+.container {
+  background: #CBBCA9;
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+}
+
+.alert {
+  background: #626B74;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
 }
