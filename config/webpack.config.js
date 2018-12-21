@@ -13,7 +13,7 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.json']
   },
-  plugins: [new ExtractTextPlugin('bundle.css', { allChunks: true })],
+  plugins: [new ExtractTextPlugin('styles/bundle.css', { allChunks: true })],
   optimization: {
     minimizer: [new UglifyJsPlugin({ extractComments: true })]
   },
