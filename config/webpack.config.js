@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -7,7 +6,7 @@ module.exports = {
   entry: path.join(process.cwd(), 'src/index.js'),
   output: {
     path: path.join(process.cwd(), 'www/assets'),
-    filename: 'bundle.js'
+    filename: 'scripts/bundle.js'
   },
   mode: process.env.NODE_ENV || 'development',
   resolve: {
@@ -43,10 +42,7 @@ module.exports = {
               loader: 'postcss-loader',
               options: {
                 config: {
-                  path: path.join(process.cwd(), 'config/postcss.config.js'),
-                  ctx: {
-                    cssnano: {}
-                  }
+                  path: path.join(process.cwd(), 'config/postcss.config.js')
                 }
               }
             }

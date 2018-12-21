@@ -1,4 +1,5 @@
 .wrapper {
   background: #222;
   color: #8ee4af;
+  box-sizing: border-box;
 }
