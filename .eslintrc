@@ -27,8 +27,17 @@
         "parser": "flow"
       }
     ],
+    "arrow-parens": [1, "as-needed"],
     "comma-dangle": 0,
+    "operator-linebreak": 0,
     "no-unused-vars": 1,
+    "react/prop-types": 1,
+    "react/no-array-index-key": 0,
+    "react/destructuring-assignment": 0,
+    "react/jsx-no-target-blank": 0,
     "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "object-curly-newline": 0
   }
 }

@@ -1,12 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: path.join(process.cwd(), 'src/index.js'),
   output: {
     path: path.join(process.cwd(), 'www/assets'),
-    filename: 'index.bundle.js'
+    filename: 'bundle.js'
   },
   mode: process.env.NODE_ENV || 'development',
   resolve: {
@@ -14,6 +15,9 @@ module.exports = {
     extensions: ['.js', '.json']
   },
   plugins: [new ExtractTextPlugin('bundle.css', { allChunks: true })],
+  optimization: {
+    minimizer: [new UglifyJsPlugin({ extractComments: true })]
+  },
   module: {
     rules: [
       {
@@ -22,7 +26,7 @@ module.exports = {
         use: ['babel-loader']
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.(css)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -31,17 +35,20 @@ module.exports = {
               options: {
                 sourceMap: true,
                 modules: true,
-                localIdentName: '[local]___[hash:base64:5]'
+                camelCase: true,
+                localIdentName: '[name]__[local]___[hash:base64:5]'
               }
             },
             {
               loader: 'postcss-loader',
               options: {
-                path: 'src/postcss.config.js'
+                config: {
+                  path: path.join(process.cwd(), 'config/postcss.config.js'),
+                  ctx: {
+                    cssnano: {}
+                  }
+                }
               }
-            },
-            {
-              loader: 'sass-loader'
             }
           ]
         })
