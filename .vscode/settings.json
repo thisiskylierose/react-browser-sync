@@ -1,0 +1,8 @@
+{
+  "editor.rulers": [100],
+  "editor.formatOnSave": true,
+  "editor.autoIndent": false,
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
+  "prettier.eslintIntegration": true
+}
